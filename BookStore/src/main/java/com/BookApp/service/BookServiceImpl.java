@@ -28,7 +28,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book findBookById(int id) {
-        return bookDao.findeBookById(id);
+        return bookDao.findBookById(id);
     }
 
     @Override

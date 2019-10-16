@@ -6,7 +6,7 @@ import java.util.List;
 public interface BookDAO {
 public List<Book> getAllBooks();
  
- public Book findeBookById(int id);
+ public Book findBookById(int id);
  
  public void addBook(Book book);
  
