@@ -6,20 +6,14 @@
 package com.BookApp.service;
 
 import com.BookApp.model.Book;
-import java.util.List;
 
 /**
  *
  * @author stefan.tomasik
  */
 public interface BookService {
-public List<Book> getAllBooks();
- 
  public Book findBookById(int id);
- 
  public void addBook(Book book);
- 
  public void updateBook(Book book);
- 
- public void deleteBook(int id);
+
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -22,14 +23,19 @@ public class BookController {
         this.repository = contactRepository;
     }
 
-    @RequestMapping("/")
+   /* @RequestMapping(value="/",  method = RequestMethod.GET)
     public String viewHomePage(Model model) {
         List<Book> listProducts = repository.getAllBooks();
         model.addAttribute("listBooks", listProducts);
 
         return "menu";
-    }
-
+    }*/
+    
+    /*@ResponseBody
+    @RequestMapping(value="/todos",  method = RequestMethod.GET)
+    public List<Book> viewHomePage() {
+        return repository.getAllBooks();
+    }*/
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveProduct(@ModelAttribute("book") Book product) {
@@ -55,9 +61,9 @@ public class BookController {
         return mav;
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String handleDeleteUser(@RequestParam(name = "bookId") int bookId) {
         repository.deleteBook(bookId);
         return "redirect:/";
-    }
+    }*/
 }

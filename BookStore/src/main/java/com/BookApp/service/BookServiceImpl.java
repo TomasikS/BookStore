@@ -5,11 +5,13 @@
  */
 package com.BookApp.service;
 
-import com.BookApp.dao.BookDaoImpl;
+
+import com.BookApp.dao.BookDao;
 import com.BookApp.model.Book;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -18,32 +20,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookServiceImpl implements BookService {
 
-    @Autowired
-    private BookDaoImpl bookDao;
+     
+  @Autowired
+   private BookDao bookDao;
 
-    @Override
-    public List<Book> getAllBooks() {
-        return bookDao.getAllBooks();
-    }
+   @Transactional
+   public void addBook(Book book) {
+      bookDao.add(book);
+   }
 
     @Override
     public Book findBookById(int id) {
-        return bookDao.findBookById(id);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public void addBook(Book book) {
-        bookDao.addBook(book);
-    }
-
+    
     @Override
     public void updateBook(Book book) {
-        bookDao.updateBook(book);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void deleteBook(int id) {
-        bookDao.deleteBook(id);
-    }
+ 
+   
 
 }
