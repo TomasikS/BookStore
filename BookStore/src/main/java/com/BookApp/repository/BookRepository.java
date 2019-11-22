@@ -3,21 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.BookApp.service;
+package com.BookApp.repository;
 
 import com.BookApp.model.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author stefan.tomasik
  */
-public interface BookService {
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
 
-    public Book addBook(Book book);
-
-    Book updateBook(Book book);
-
-    Book getBookById(long id);
-
-    void deleteBook(long id);
 }

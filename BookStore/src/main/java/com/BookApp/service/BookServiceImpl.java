@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.BookApp.service;
 
-
-import com.BookApp.dao.BookDao;
 import com.BookApp.model.Book;
-import java.util.List;
+import com.BookApp.repository.BookRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -20,26 +13,31 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BookServiceImpl implements BookService {
 
-     
-  @Autowired
-   private BookDao bookDao;
-
-   @Transactional
-   public void addBook(Book book) {
-      bookDao.add(book);
-   }
+    @Autowired
+    private BookRepository Repository;
 
     @Override
-    public Book findBookById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public void updateBook(Book book) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Book addBook(Book book) {
+        return Repository.save(book);
     }
 
- 
-   
+    @Override
+    public Book updateBook(Book book) {
+        Optional<Book> updatedBook = Repository.findById(book.getId());
+        return updatedBook.get();
+    }
+
+    @Override
+    public Book getBookById(long id) {
+        Optional<Book> book = Repository.findById(id);
+        return book.get();
+
+    }
+
+    @Override
+    public void deleteBook(long id) {
+        Optional<Book> book = Repository.findById(id);
+        Repository.delete(book.get());
+    }
 
 }

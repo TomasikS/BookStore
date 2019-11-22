@@ -6,14 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 @Table(name = "Book")
 public class Book {
 
-    public Book(Long id, String name, String autor, String zaner, String datumvydania, String vydavatelstvo, int pocetstran, 
+    public Book(String name, String autor, String zaner, String datumvydania, String vydavatelstvo, int pocetstran,
             String jazyk, String ISBN, String Popis, boolean dostupnost, int mnozstvonapredaj, int mnozstvonavypozicku, double cena) {
-        this.id = id;
+
         this.name = name;
         this.autor = autor;
         this.zaner = zaner;
@@ -28,28 +30,44 @@ public class Book {
         this.mnozstvonavypozicku = mnozstvonavypozicku;
         this.cena = cena;
     }
-
-   
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
+    @Column(name = "name")
     private String name;
+    @Column(name = "autor")
     private String autor;
+    @Column(name = "zaner")
     private String zaner;
+    @Column(name = "datumvydania")
     private String datumvydania;
+    @Column(name = "vydavatelstvo")
     private String vydavatelstvo;
+    @Column(name = "pocetstran")
     private int pocetstran;
+    @Column(name = "jazyk")
     private String jazyk;
+    @Column(name = "ISBN")
     private String ISBN;
+    @Column(name = "Popis")
     private String Popis;
+
+    @Column(name = "dostupnost")
     private boolean dostupnost;
+
+    @Column(name = "mnozstvonapredaj")
     private int mnozstvonapredaj;
+
+    @Column(name = "mnozstvonavypozicku")
     private int mnozstvonavypozicku;
+
+    @Column(name = "cena")
     private double cena;
 
     public Book() {
     }
 
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -58,7 +76,6 @@ public class Book {
         this.name = name;
     }
 
-    @Column(name = "autor")
     public String getAutor() {
         return autor;
     }
@@ -67,7 +84,6 @@ public class Book {
         this.autor = autor;
     }
 
-    @Column(name = "zaner")
     public String getZaner() {
         return zaner;
     }
@@ -76,7 +92,6 @@ public class Book {
         this.zaner = zaner;
     }
 
-    @Column(name = "datumvydania")
     public String getDatumvydania() {
         return datumvydania;
     }
@@ -85,7 +100,6 @@ public class Book {
         this.datumvydania = datumvydania;
     }
 
-    @Column(name = "vydavatelstvo")
     public String getVydavatelstvo() {
         return vydavatelstvo;
     }
@@ -94,7 +108,6 @@ public class Book {
         this.vydavatelstvo = vydavatelstvo;
     }
 
-    @Column(name = "pocetstran")
     public int getPocetstran() {
         return pocetstran;
     }
@@ -103,7 +116,6 @@ public class Book {
         this.pocetstran = pocetstran;
     }
 
-    @Column(name = "jazyk")
     public String getJazyk() {
         return jazyk;
     }
@@ -112,7 +124,6 @@ public class Book {
         this.jazyk = jazyk;
     }
 
-    @Column(name = "ISBN")
     public String getISBN() {
         return ISBN;
     }
@@ -121,7 +132,6 @@ public class Book {
         this.ISBN = ISBN;
     }
 
-    @Column(name = "Popis")
     public String getPopis() {
         return Popis;
     }
@@ -130,7 +140,6 @@ public class Book {
         this.Popis = Popis;
     }
 
-     @Column(name="dostupnost")
     public boolean isDostupnost() {
         return dostupnost;
     }
@@ -138,7 +147,7 @@ public class Book {
     public void setDostupnost(boolean dostupnost) {
         this.dostupnost = dostupnost;
     }
-    @Column(name="mnozstvonapredaj")
+
     public int getMnozstvonapredaj() {
         return mnozstvonapredaj;
     }
@@ -146,7 +155,7 @@ public class Book {
     public void setMnozstvonapredaj(int mnozstvonapredaj) {
         this.mnozstvonapredaj = mnozstvonapredaj;
     }
-    @Column(name="mnozstvonavypozicku")
+
     public int getMnozstvonavypozicku() {
         return mnozstvonavypozicku;
     }
@@ -154,7 +163,7 @@ public class Book {
     public void setMnozstvonavypozicku(int mnozstvonavypozicku) {
         this.mnozstvonavypozicku = mnozstvonavypozicku;
     }
-    @Column(name="cena")
+
     public double getCena() {
         return cena;
     }
@@ -163,8 +172,6 @@ public class Book {
         this.cena = cena;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
