@@ -1,7 +1,10 @@
 package com.BookApp.model;
 
+import com.BookApp.model.Book.MyZaner.Zaner;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Table(name = "Book")
 public class Book {
 
-    public Book(String name, String autor, String zaner, String datumvydania, String vydavatelstvo, int pocetstran,
+    public Book(String name, String autor, Zaner zaner, String datumvydania, String vydavatelstvo, int pocetstran,
             String jazyk, String ISBN, String Popis, boolean dostupnost, int mnozstvonapredaj, int mnozstvonavypozicku, double cena) {
 
         this.name = name;
@@ -33,13 +36,25 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(name="zaner")
+    @Enumerated(EnumType.STRING)
+    private Zaner zaner;
 
+    public Zaner getZaner() {
+        return zaner;
+    }
+
+    public void setZaner(Zaner zaner) {
+        this.zaner = zaner;
+    }
+    
     @Column(name = "name")
     private String name;
     @Column(name = "autor")
     private String autor;
-    @Column(name = "zaner")
-    private String zaner;
+   
+    
     @Column(name = "datumvydania")
     private String datumvydania;
     @Column(name = "vydavatelstvo")
@@ -84,13 +99,6 @@ public class Book {
         this.autor = autor;
     }
 
-    public String getZaner() {
-        return zaner;
-    }
-
-    public void setZaner(String zaner) {
-        this.zaner = zaner;
-    }
 
     public String getDatumvydania() {
         return datumvydania;
@@ -180,4 +188,17 @@ public class Book {
         this.id = id;
     }
 
+
+ public static class MyZaner {
+  public enum  Zaner {
+    western,
+    roman,
+    naucna,
+    scifi,
+    detektivka
+    
+  }
 }
+}
+
+
