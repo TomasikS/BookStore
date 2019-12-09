@@ -148,7 +148,7 @@ public class Book {
         this.Popis = Popis;
     }
 
-    public boolean isDostupnost() {
+    public boolean getDostupnost() {
         return dostupnost;
     }
 
