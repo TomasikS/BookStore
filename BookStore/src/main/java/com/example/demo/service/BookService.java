@@ -36,8 +36,8 @@ public class BookService {
         return repository.save(oldBook);
     }
 
-    public Optional getBook(Long id) {
-      return   repository.findById(id);
+    public Book getBook(Long id) {
+      return   repository.findById(id).get();
 
     }
 

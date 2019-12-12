@@ -25,45 +25,43 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class BookController {
-    
+
     @Autowired
     BookService service;
-    
+
     @PostMapping("/books")
     public ResponseEntity< Book> createBook(@RequestBody Book book) {
-        
+
 //        return ResponseEntity.ok().body(service.createBook(book));
         service.createBook(book);
         return new ResponseEntity<>(HttpStatus.OK);
 
-
     }
-    
+
     @PutMapping("/books/{id}")
     public ResponseEntity< Book> updateBook(@PathVariable Long id, @RequestBody Book book) throws ResourceNotFoundException {
-       
+
 //      return ResponseEntity.ok().body(service.updateBook(book));
         service.updateBook(book);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    
+
     @DeleteMapping("/books/{id}")
     public HttpStatus deleteBook(@PathVariable Long id) throws ResourceNotFoundException {
-        
-         
-      service.deleteBook(id);
-      
-           return HttpStatus.OK;
+
+        service.deleteBook(id);
+
+        return HttpStatus.OK;
     }
-    
+
     @GetMapping("/books/{id}")
-    public ResponseEntity< Optional> getBook(@PathVariable Long id) throws ResourceNotFoundException {
-        
-        Optional book = service.getBook(id);
-        
-//        return ResponseEntity.ok().body(book);
-        return new ResponseEntity<>(HttpStatus.OK);
-        
+    public ResponseEntity< Book> getBook(@PathVariable Long id) throws ResourceNotFoundException {
+
+        Book book = service.getBook(id);
+
+        return ResponseEntity.ok().body(book);
+        //     return new ResponseEntity<>(HttpStatus.OK);
+
     }
-    
+
 }
