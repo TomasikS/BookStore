@@ -59,8 +59,8 @@ public class BookController {
 
         Book book = service.getBook(id);
 
-        return ResponseEntity.ok().body(book);
-        //     return new ResponseEntity<>(HttpStatus.OK);
+//        return ResponseEntity.ok().body(book);
+             return new ResponseEntity<>(HttpStatus.OK);
 
     }
 
