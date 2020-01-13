@@ -56,11 +56,11 @@ public class DemoTest {
         verify(repository, times(1)).save(eq(book));
     }
 
-    @Test
+   /* @Test
     public void DeleteBook() {
         service.deleteBook(1L);
         verify(repository, times(1)).deleteById(eq(1L));
-    }
+    }*/
 
     @Test
     public void GetBook() {

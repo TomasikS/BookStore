@@ -7,7 +7,6 @@ package com.example.demo.service;
 
 import com.example.demo.model.Book;
 import com.example.demo.repository.BookRepository;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,10 +40,10 @@ public class BookService {
 
     }
 
-    public void deleteBook(Long id) {
+   /* public void deleteBook(Long id) {
  
         repository.deleteById(id);
 
-    }
+    }*/
 
 }
